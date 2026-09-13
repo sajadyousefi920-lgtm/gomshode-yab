@@ -34,6 +34,7 @@
             border: none;
             border-radius: 12px;
             font-size: 17px;
+            cursor: pointer;
         }
 
         .lost {
@@ -43,6 +44,39 @@
 
         .found {
             background: #43a047;
+            color: white;
+        }
+
+        .form {
+            display: none;
+            margin-top: 25px;
+            text-align: right;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .submit {
+            background: #1976d2;
+            color: white;
+        }
+
+        .back {
+            background: #777;
             color: white;
         }
     </style>
@@ -56,15 +90,87 @@
 
     <p>وسیله‌ای گم کردی یا چیزی پیدا کردی؟</p>
 
-    <button class="lost">
+    <button class="lost" onclick="showForm('lostForm')">
         🔴 وسیله‌ام گم شده
     </button>
 
-    <button class="found">
+    <button class="found" onclick="showForm('foundForm')">
         🟢 وسیله‌ای پیدا کردم
     </button>
 
+    <div id="lostForm" class="form">
+
+        <h2>🔴 ثبت وسیله گمشده</h2>
+
+        <label>نام وسیله</label>
+        <input type="text" placeholder="مثلاً: کیف، گوشی، مدارک">
+
+        <label>محل گم شدن</label>
+        <input type="text" placeholder="مثلاً: قرچک، میدان اصلی">
+
+        <label>توضیحات</label>
+        <textarea placeholder="ویژگی‌های وسیله را بنویسید..."></textarea>
+
+        <label>شماره تماس</label>
+        <input type="tel" placeholder="شماره تماس">
+
+        <button class="submit" onclick="submitForm()">
+            ثبت آگهی
+        </button>
+
+        <button class="back" onclick="goBack()">
+            بازگشت
+        </button>
+
+    </div>
+
+    <div id="foundForm" class="form">
+
+        <h2>🟢 ثبت وسیله پیدا شده</h2>
+
+        <label>نام وسیله</label>
+        <input type="text" placeholder="مثلاً: کیف، گوشی، مدارک">
+
+        <label>محل پیدا شدن</label>
+        <input type="text" placeholder="مثلاً: قرچک، میدان اصلی">
+
+        <label>توضیحات</label>
+        <textarea placeholder="ویژگی‌های وسیله را بنویسید..."></textarea>
+
+        <label>شماره تماس</label>
+        <input type="tel" placeholder="شماره تماس">
+
+        <button class="submit" onclick="submitForm()">
+            ثبت آگهی
+        </button>
+
+        <button class="back" onclick="goBack()">
+            بازگشت
+        </button>
+
+    </div>
+
 </div>
+
+<script>
+
+function showForm(formId) {
+    document.getElementById("lostForm").style.display = "none";
+    document.getElementById("foundForm").style.display = "none";
+
+    document.getElementById(formId).style.display = "block";
+}
+
+function goBack() {
+    document.getElementById("lostForm").style.display = "none";
+    document.getElementById("foundForm").style.display = "none";
+}
+
+function submitForm() {
+    alert("آگهی شما با موفقیت ثبت شد ✅");
+}
+
+</script>
 
 </body>
 </html>
